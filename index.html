@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @keyframes rotate {
+                0% {transform: rotate(-30deg);}
+                100% {transform: rotate(30deg);}
+            }
+            @-webkit-keyframes rotate {
+                0% {-webkit-transform: rotate(-30deg);}
+                100% {-webkit-transform: rotate(30deg);}
+            }
+
+            @keyframes move {
+                0%   {left:0px; }
+                50%  {left:200px;}
+                100% {left:0px;}
+            }
+
+            @-webkit-keyframes move {
+                0%   {left:0px; }
+                50%  {left:200px;}
+                100% {left:0px;}
+            }
+
+            .rotating {
+                animation: rotate 1s 2 alternate ease-in-out;
+                -webkit-animation: rotate 1s 2 alternate ease-in-out;
+            }
+
+            .moving {
+                -webkit-animation: move 1s linear 2 alternate; 
+                animation: move 1s linear 2 alternate;
+            }
+
+            .myElement {
+                margin: 50px auto;
+            }
+
+            .myElement2 {
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>      
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="myElement"></div>
+        <div class="myElement"></div>
+        <div class="myElement2"></div>
+        <script src="js/module.js"></script>
+        <script>
+            myModule.init({
+                msg: 'Hello, this is some random text... ',
+                selector : document.querySelectorAll('.myElement'),
+                bgColor: '#FF7F50',
+                child: {
+                    tag: 'button', 
+                    value: 'Click me', 
+                    event: 'click', 
+                    handler: function(e){ 
+                        var self = e.target;
+                        self.parentNode.style.backgroundColor = '#00BFFF';
+                    }
+                }
+            });
+
+
+            myModule.init({
+                msg: 'Jos malo texta... ',
+                selector : document.querySelectorAll('.myElement2'),
+                width: '500px',
+                height: '100px',
+                action: {
+                    event: 'mouseover',
+                    handler: function(e){
+                        e.target.classList.add('moving');
+                    }
+                }              
+            });
+        </script>
+    </body>
+</html>
